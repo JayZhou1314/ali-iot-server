@@ -1,0 +1,10 @@
+
+ali
+  iot
+    server
+      access_key_id: xxx
+      access_key_secret: xxx
+      endpoint_name: xxx
+      region_id: xxx
+      product: xxx
+      domain: xxx
