@@ -1,6 +1,8 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
 
+ali-iot.yml
+
 ### STS ###
 .apt_generated
 .classpath
@@ -14,7 +16,6 @@ target/
 *.iws
 *.iml
 *.ipr
-ali-iot.yml
 
 ### NetBeans ###
 nbproject/private/
