@@ -1,11 +1,37 @@
 package com.fw.ali.iot.server;
 
+import com.aliyuncs.exceptions.ClientException;
+import com.aliyuncs.iot.model.v20170420.RegistDeviceRequest;
+import com.aliyuncs.iot.model.v20170420.RegistDeviceResponse;
+import com.fw.ali.iot.AliIotClient;
+import com.fw.ali.iot.server.dto.Device;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 public class DeviceService {
+
+    @Autowired
+    private AliIotClient aliIotClient;
 
     /**
      * 设备注册
      */
-    public void registe() {}
+    public Device regist(String productKey, String deviceName) throws ClientException, IotException {
+        RegistDeviceRequest req = new RegistDeviceRequest();
+        req.setProductKey(productKey);
+        req.setDeviceName(deviceName);
+        RegistDeviceResponse res = aliIotClient.getClient().getAcsResponse(req);
+        if (! res.getSuccess()) {
+            throw new IotException(res.getErrorMessage());
+        }
+        Device device = new Device();
+        device.setId(res.getDeviceId());
+        device.setName(res.getDeviceName());
+        device.setSecret(res.getDeviceSecret());
+        device.setStatus(res.getDeviceStatus());
+        return device;
+    }
 
     /**
      * 批量申请设备

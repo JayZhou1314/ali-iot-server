@@ -21,12 +21,11 @@ public class AliIotConfig {
     /**
      * 初始化实例期间, 设置配置项的值.
      *
-     * 配置值的获得方式可以为:
+     * 配置值的获得方式可以为: todo
      * 远程服务
      * 配置文件
      * 数据库
      */
     public AliIotConfig() {
-       //todo
     }
 }
